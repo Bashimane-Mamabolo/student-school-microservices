@@ -10,6 +10,15 @@
         <module name="gateway" />
         <module name="discovery" />
       </profile>
+      <profile name="Annotation profile for student" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.40/lombok-1.18.40.jar" />
+        </processorPath>
+        <module name="student" />
+      </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
@@ -17,6 +26,7 @@
       <module name="config-server" options="-parameters" />
       <module name="discovery" options="-parameters" />
       <module name="gateway" options="-parameters" />
+      <module name="student" options="-parameters" />
     </option>
   </component>
 </project>
