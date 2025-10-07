@@ -3,6 +3,7 @@ package com.bash.student.controller;
 import com.bash.student.models.Student;
 import com.bash.student.services.StudentService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +17,7 @@ public class StudentController {
     private final StudentService studentService;
 
     @PostMapping
-    @ResponseStatus
+    @ResponseStatus(HttpStatus.CREATED)
     public void save(
             @RequestBody Student student
     ){
