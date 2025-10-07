@@ -30,4 +30,7 @@ eureka:
     register-with-eureka: false
     fetch-registry: false
 
-
+management:
+  tracing:
+    sampling:
+      probability: 1.0
