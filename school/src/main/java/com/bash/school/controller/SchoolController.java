@@ -1,5 +1,6 @@
 package com.bash.school.controller;
 
+import com.bash.school.models.CompleteSchoolResponse;
 import com.bash.school.models.School;
 import com.bash.school.services.SchoolService;
 import lombok.RequiredArgsConstructor;
@@ -27,5 +28,12 @@ public class SchoolController {
     @GetMapping
     public ResponseEntity<List<School>> findAllSchools(){
         return ResponseEntity.ok(schoolService.findAllSchools());
+    }
+
+    @GetMapping("with-students/{school-id}")
+    public ResponseEntity<CompleteSchoolResponse> findSchoolsWithStudents(
+            @PathVariable("school-id") Integer schoolId
+    ){
+        return ResponseEntity.ok(schoolService.findSchoolsWithStudents(schoolId));
     }
 }

@@ -1,5 +1,6 @@
 package com.bash.school.services;
 
+import com.bash.school.models.CompleteSchoolResponse;
 import com.bash.school.models.School;
 import com.bash.school.repository.SchoolRepository;
 import lombok.RequiredArgsConstructor;
@@ -21,4 +22,17 @@ public class SchoolService {
         return schoolRepository.findAll();
     }
 
+    public CompleteSchoolResponse findSchoolsWithStudents(Integer schoolId) {
+
+        var school = schoolRepository.findById(schoolId)
+                .orElse(
+                        School.builder()
+                                .name("NotFound")
+                                .email("NotFound")
+                                .build()
+                );
+        // Find all students from this school (schoolId) from the student microservices
+        var students = null;
+        return null;
+    }
 }
