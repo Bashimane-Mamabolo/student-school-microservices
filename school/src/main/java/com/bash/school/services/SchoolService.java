@@ -3,6 +3,7 @@ package com.bash.school.services;
 import com.bash.school.models.CompleteSchoolResponse;
 import com.bash.school.models.School;
 import com.bash.school.repository.SchoolRepository;
+import com.bash.school.services.client.StudentClientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,7 @@ import java.util.List;
 public class SchoolService {
 
     private final SchoolRepository schoolRepository;
+    private StudentClientService studentClientService;
 
     public void saveSchool(School school){
         schoolRepository.save(school);
@@ -32,7 +34,11 @@ public class SchoolService {
                                 .build()
                 );
         // Find all students from this school (schoolId) from the student microservices
-        var students = null;
-        return null;
+        var students = studentClientService.findAllStudentsBySchool(schoolId);
+        return CompleteSchoolResponse.builder()
+                .name(school.getName())
+                .email(school.getEmail())
+                .students(students)
+                .build();
     }
 }
